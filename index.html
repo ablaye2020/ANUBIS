@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À N I B U S · Signal Generator</title>
+    <title>ANUBIS · Signal Generator</title>
     <style>
         * {
             margin: 0;
@@ -24,7 +24,7 @@
             padding: 40px 20px;
         }
 
-        /* === IMAGE DE FOND (PLUS GRANDE ET PLUS CLAIRE) === */
+        /* === IMAGE DE FOND === */
         .bg-image {
             position: fixed;
             inset: 0;
@@ -36,7 +36,7 @@
             pointer-events: none;
         }
 
-        /* === LIGNES ROUGES (plus fines) === */
+        /* === LIGNES ROUGES === */
         .line-h {
             position: fixed;
             height: 1px;
@@ -173,7 +173,7 @@
             font-family: 'Courier New', monospace;
         }
 
-        /* === MAIN CONTENT (sans encadrement) === */
+        /* === MAIN CONTENT === */
         #main-content {
             display: none;
             position: relative;
@@ -187,7 +187,7 @@
         }
         #main-content.visible { display: block; }
 
-        /* === IMAGE EN HAUT (PLUS GRANDE) === */
+        /* === IMAGE EN HAUT === */
         .header-image {
             width: 100%;
             max-height: 300px;
@@ -196,7 +196,7 @@
             margin-bottom: 16px;
         }
 
-        /* === À N I B U S === */
+        /* === ANUBIS === */
         .main-logo {
             font-size: 52px;
             font-weight: 900;
@@ -425,6 +425,10 @@
             font-family: 'Courier New', monospace;
             letter-spacing: 2px;
         }
+        .admin-code span {
+            color: #ff3333;
+            font-weight: bold;
+        }
 
         .whatsapp-note {
             text-align: center;
@@ -446,7 +450,7 @@
 </head>
 <body>
 
-    <!-- === IMAGE DE FOND (PLUS CLAIRE) === -->
+    <!-- === IMAGE DE FOND === -->
     <img class="bg-image" src="19976347-033A-4A28-BD23-1F2608B32B8B.jpeg" alt="background" onerror="this.style.display='none'">
 
     <!-- === LIGNES ROUGES === -->
@@ -472,7 +476,7 @@
     <!-- === ACCESS OVERLAY === -->
     <div id="access-overlay">
         <div class="lock-icon">⛔</div>
-        <div class="logo">À N I B U S</div>
+        <div class="logo">ANUBIS</div>
         <div class="sub">Access Restricted</div>
         <input type="password" id="access-input" placeholder="••••" maxlength="4" autofocus>
         <button class="btn-access" onclick="checkAccess()">ENTER</button>
@@ -484,11 +488,11 @@
 
     <!-- === MAIN CONTENT === -->
     <div id="main-content">
-        <!-- IMAGE EN HAUT (PLUS GRANDE) -->
-        <img class="header-image" id="header-image" src="19976347-033A-4A28-BD23-1F2608B32B8B.jpeg" alt="À N I B U S" onerror="this.style.display='none'">
+        <!-- IMAGE EN HAUT -->
+        <img class="header-image" id="header-image" src="19976347-033A-4A28-BD23-1F2608B32B8B.jpeg" alt="ANUBIS" onerror="this.style.display='none'">
 
-        <!-- À N I B U S -->
-        <div class="main-logo">À <span>N</span> I <span>B</span> U S</div>
+        <!-- ANUBIS -->
+        <div class="main-logo">A<span>N</span>U<span>B</span>IS</div>
         <div class="main-sub">⚡ Signal Generator ⚡</div>
 
         <div class="form-group">
@@ -541,8 +545,8 @@
             <a href="https://ablaye2020.github.io" target="_blank">ablaye2020.github.io</a>
         </div>
 
-        <!-- ADMIN CODE -->
-        <div class="admin-code">Admin Code: 2112</div>
+        <!-- ADMIN CODE EN BAS -->
+        <div class="admin-code">🔑 Admin Code: <span>2112</span></div>
     </div>
 
     <script>
@@ -559,6 +563,7 @@
 
         // ============================================
         // CODE D'ACCÈS : 1212
+        // ADMIN CODE : 2112
         // ============================================
         const ACCESS_CODE = '1212';
         const ADMIN_CODE = '2112';
@@ -573,6 +578,8 @@
                 document.getElementById('main-content').classList.add('visible');
                 error.textContent = '';
                 isAdminMode = false;
+                document.getElementById('status-text').textContent = 'Fill the form and click GENERATE';
+                document.getElementById('status-text').style.color = '#888';
             } else if (input.value === ADMIN_CODE) {
                 document.getElementById('access-overlay').classList.add('hidden');
                 document.getElementById('main-content').classList.add('visible');
@@ -592,7 +599,7 @@
         });
 
         // ============================================
-        // GÉNÉRATION - MESSAGE TRÈS CONVAINCANT
+        // GÉNÉRATION
         // ============================================
         let isGenerating = false;
         let displayText = '';
@@ -646,7 +653,7 @@
                 return msg;
             }
 
-            // === VERSION NORMALE (CONVAINCANTE) ===
+            // === VERSION NORMALE ===
             let msg = '';
             msg += `🚨 URGENT REPORT - ${typeLabels[type] || 'SERIOUS VIOLATION'}\n\n`;
             msg += `I am filing an OFFICIAL COMPLAINT against a WhatsApp user who is DANGEROUS and is violating your Terms of Service.\n\n`;
