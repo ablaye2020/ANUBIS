@@ -287,7 +287,7 @@
             margin: 18px 0 20px;
             text-align: left;
             display: none;
-            max-height: 450px;
+            max-height: 350px;
             overflow-y: auto;
             min-height: 50px;
             border-left: 2px solid rgba(255, 0, 0, 0.12);
@@ -303,8 +303,8 @@
         }
         .generated-box .msg-content {
             color: #eee;
-            font-size: 15px;
-            line-height: 1.9;
+            font-size: 14px;
+            line-height: 1.8;
             white-space: pre-wrap;
             word-break: break-word;
             font-family: 'Segoe UI', sans-serif;
@@ -350,7 +350,7 @@
         .btn-generate:hover {
             background: #cc0000;
             transform: scale(1.03);
-            box-shadow: 0 0 60px rgba(255,  0, 0, 0.35);
+            box-shadow: 0 0 60px rgba(255, 0, 0, 0.35);
         }
         .btn-generate:disabled {
             opacity: 0.4;
@@ -547,9 +547,6 @@
             headerImg.onerror = function() { this.style.display = 'none'; };
         });
 
-        // ============================================
-        // CODES : 1212 = normal, 2112 = ADMIN
-        // ============================================
         const ACCESS_CODE = '1212';
         const ADMIN_CODE = '2112';
         let isAdminMode = false;
@@ -584,7 +581,7 @@
         });
 
         // ============================================
-        // 5 STYLES DE MESSAGES LONGS ET CONVAINCANTS
+        // MESSAGES COURTS (POUR ÉVITER LE SPAM)
         // ============================================
         let messageIndex = 0;
 
@@ -592,58 +589,54 @@
             const nom = document.getElementById('nom').value.trim();
             const numero = document.getElementById('numero').value.trim();
             const details = document.getElementById('details').value.trim();
-            const type = document.getElementById('type').value;
 
+            const type = document.getElementById('type').value;
             const typeLabels = {
-                harassment: "harassment and bullying",
-                scam: "scam and fraud",
-                identity: "identity theft",
-                illegal: "illegal content sharing",
-                threats: "threats and violence",
-                impersonation: "impersonation",
-                doxxing: "doxxing and privacy violation",
-                other: "serious violation"
+                harassment: "harassing me",
+                scam: "trying to scam me",
+                identity: "pretending to be me",
+                illegal: "sharing bad stuff",
+                threats: "threatening me",
+                impersonation: "pretending to be someone else",
+                doxxing: "sharing my private info",
+                other: "doing really bad things"
             };
 
-            const typeLabel = typeLabels[type] || "serious violation";
+            const typeLabel = typeLabels[type] || "doing bad things";
 
-            // === ADMIN MODE (ultra convaincant) ===
+            // === ADMIN MODE ===
             if (isAdminMode) {
-                const adminStyles = [
-                    `I'm writing to file a formal complaint against ${nom || 'a WhatsApp user'} ${numero ? 'with the number ' + numero + ' ' : ''}who has been engaging in ${typeLabel}. This has been going on for weeks now and I'm genuinely scared for my safety. ${details || 'They have been sending threatening messages, making me feel unsafe in my own home.'} I've tried blocking them but they keep creating new accounts. I have screenshots of everything. I need WhatsApp to take this seriously and permanently ban this person. This is not just a minor issue — this is a matter of personal safety. Please investigate and remove this user immediately. I'm available to provide any additional evidence you need.`,
-
-                    `This is a formal complaint against ${nom || 'an individual'} ${numero ? '(' + numero + ') ' : ''}who is using WhatsApp to commit ${typeLabel}. I'm honestly scared and don't know what to do anymore. ${details || 'They have been harassing me daily, sending threats, and even sharing my personal information without my consent.'} I've reported them multiple times but nothing has changed. This person is dangerous and needs to be removed from the platform. I'm prepared to involve law enforcement if necessary. Please take immediate action and confirm when this account has been banned.`,
-
-                    `I need to report ${nom || 'a user'} ${numero ? 'with number ' + numero + ' ' : ''}for ${typeLabel}. This person has been causing me serious distress and I fear for my well-being. ${details || 'The harassment has escalated to threats and I no longer feel safe using WhatsApp.'} I've documented everything and I'm ready to share the evidence. I'm asking WhatsApp to investigate this matter urgently and permanently ban this user. This behavior violates your terms of service and puts users at risk. Please respond with confirmation of action taken.`
+                const msgs = [
+                    `Hi, I need to report ${nom || 'someone'} ${numero ? 'with this number ' + numero + ' ' : ''}who keeps ${typeLabel}. ${details || 'I feel unsafe and I need help.'} Can you please look into this? I have proof if needed.`,
+                    
+                    `I'm reaching out because ${nom || 'a user'} ${numero ? '(' + numero + ') ' : ''}has been ${typeLabel}. ${details || 'This has been going on for too long.'} Please help me with this.`,
+                    
+                    `Hello, I need assistance. ${nom || 'Someone'} ${numero ? 'from ' + numero + ' ' : ''}is ${typeLabel}. ${details || 'I'm scared and I don't know what to do.'} Can someone help me please?`
                 ];
-                const msg = adminStyles[messageIndex % adminStyles.length];
+                const msg = msgs[messageIndex % msgs.length];
                 messageIndex++;
                 return msg;
             }
 
-            // === NORMAL MODE (5 styles longs et variés) ===
+            // === NORMAL MODE (5 styles courts) ===
             let msg = '';
             const style = messageIndex % 5;
 
             switch(style) {
-                case 0: // Paniqué / Pressé
-                    msg = `Hi, I'm really panicking right now and I need your help urgently. ${nom ? 'There\'s a person named ' + nom + ' ' : 'There\'s someone '} ${numero ? 'with the number ' + numero + ' ' : ''}who has been ${typeLabel} me constantly. ${details || 'They send me threatening messages every day, and I feel like I can\'t escape it.'} I've tried blocking them but they just create new accounts. I'm actually scared to open WhatsApp now because I don't know what I'll find. This person is really persistent and I don't feel safe anymore. Can you please investigate this and block them permanently? I have screenshots of everything they've sent me and I'm happy to share them. Please help me, I don't know what else to do.`;
+                case 0:
+                    msg = `Hi, I need to report ${nom || 'someone'} ${numero ? 'with this number ' + numero + ' ' : ''}who keeps ${typeLabel}. ${details || 'I've been dealing with this for a while and I'm really stressed.'} Can you please check this out? I can send proof if needed. Thank you.`;
                     break;
-
-                case 1: // Triste / Désespéré
-                    msg = `I'm writing this because I feel completely helpless and desperate. ${nom ? 'A user named ' + nom + ' ' : 'Someone '} ${numero ? 'from the number ' + numero + ' ' : ''}has been making my life a nightmare with ${typeLabel}. ${details || 'Every day I wake up to new threats and insults. It\'s exhausting and I can\'t take it anymore.'} I've lost sleep, I've lost my peace of mind, and I just want this to stop. I've reported this person before but nothing was done. I'm begging you to take this seriously. I don't feel safe on your platform anymore. Please investigate and remove this user. I need your help because I don't know where else to turn.`;
+                case 1:
+                    msg = `Hello, I'm having a problem with ${nom || 'a user'} ${numero ? '(' + numero + ') ' : ''}who is ${typeLabel}. ${details || 'I don't feel safe using WhatsApp anymore.'} Could you please help me resolve this? I appreciate your help.`;
                     break;
-
-                case 2: // En colère / Frustré
-                    msg = `I'm so fed up with this situation. ${nom ? nom + ' ' : 'This person '} ${numero ? '(' + numero + ') ' : ''}has been crossing every line with ${typeLabel}. ${details || 'I\'ve been patient, I\'ve tried to ignore it, but nothing works. They keep coming back.'} I've reported them multiple times and WhatsApp has done nothing. Why is this allowed to continue? This person is clearly violating your terms of service and making the platform unsafe for users like me. I'm angry and frustrated that I have to deal with this. I want this person banned immediately. I'm not going to stop until something is done about this. Please take action now.`;
+                case 2:
+                    msg = `I need your help with ${nom || 'someone'} ${numero ? 'from ' + numero + ' ' : ''}who has been ${typeLabel}. ${details || 'This is really affecting me and I need it to stop.'} Please assist me with this. Thank you.`;
                     break;
-
-                case 3: // Fatigué / Épuisé
-                    msg = `I can't take this anymore. I'm completely exhausted. ${nom ? nom + ' ' : 'This person '} ${numero ? 'from ' + numero + ' ' : ''}has been draining me mentally and emotionally with ${typeLabel}. ${details || 'It\'s the same thing every day — threats, insults, harassment. I can\'t even relax anymore.'} I feel like I'm being targeted and I don't know why. I've tried everything — blocking, reporting, ignoring — but nothing works. I just want peace. I want to use WhatsApp without being harassed. Please help me. I'm tired of fighting this alone. I need your support to end this once and for all.`;
+                case 3:
+                    msg = `Hi there, ${nom || 'a person'} ${numero ? 'with number ' + numero + ' ' : ''}has been ${typeLabel}. ${details || 'I've tried everything and nothing works.'} Can you please look into this for me? I'd really appreciate it.`;
                     break;
-
-                case 4: // Direct / Franc
-                    msg = `Let me be direct with you — ${nom || 'this person'} ${numero ? '(' + numero + ') ' : ''}is a serious problem. They've been ${typeLabel} me and it needs to stop immediately. ${details || 'I\'ve documented everything and I\'m ready to take legal action if necessary.'} This is not a minor complaint. This person is dangerous and WhatsApp needs to take responsibility. I'm asking you to investigate this matter thoroughly and permanently ban this user. I've been a loyal WhatsApp user for years and I expect to feel safe on your platform. Please respond with confirmation of what action you're taking. I'm not going to let this go.`;
+                case 4:
+                    msg = `Hello, I'm reaching out because ${nom || 'someone'} ${numero ? '(' + numero + ') ' : ''}is ${typeLabel}. ${details || 'I'm worried and need this to stop.'} Please help me with this situation. Thank you.`;
                     break;
             }
 
@@ -685,25 +678,20 @@
                     displayText += chars[index];
                     output.textContent = displayText;
                     index++;
-                    const delay = chars[index - 1] === '\n' ? 40 : 12 + Math.random() * 20;
+                    const delay = 15 + Math.random() * 25;
                     setTimeout(typeNextChar, delay);
                 } else {
                     isGenerating = false;
                     btnGen.disabled = false;
                     btnCopy.disabled = false;
                     btnWa.disabled = false;
-                    if (isAdminMode) {
-                        status.textContent = '✅ ADMIN — ULTRA CONVINCING';
-                        status.style.color = '#ff3333';
-                    } else {
-                        status.textContent = '✅ Message ready';
-                        status.style.color = '#777';
-                    }
+                    status.textContent = '✅ Message ready';
+                    status.style.color = '#777';
                     showToast('✅ Message generated');
                 }
             }
 
-            setTimeout(typeNextChar, 150);
+            setTimeout(typeNextChar, 100);
         }
 
         function copyMessage() {
