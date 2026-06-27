@@ -31,10 +31,101 @@
             height: 100%;
             object-fit: cover;
             z-index: 0;
-            opacity: 0.40;
+            opacity: 0.35;
             pointer-events: none;
-            filter: brightness(0.6) saturate(1.2);
+            filter: brightness(0.5) saturate(1.2);
         }
+
+        /* === LOGOS EN FOND ANIMÉS === */
+        .bg-logos {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-logo {
+            position: absolute;
+            opacity: 0.08;
+            animation: floatLogo 20s linear infinite;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.05));
+        }
+
+        .bg-logo:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            top: 5%;
+            left: 5%;
+            animation-duration: 22s;
+            animation-delay: 0s;
+        }
+        .bg-logo:nth-child(2) {
+            width: 100px;
+            height: 100px;
+            bottom: 10%;
+            right: 8%;
+            animation-duration: 18s;
+            animation-delay: 3s;
+        }
+        .bg-logo:nth-child(3) {
+            width: 90px;
+            height: 90px;
+            top: 40%;
+            left: 60%;
+            animation-duration: 25s;
+            animation-delay: 5s;
+        }
+        .bg-logo:nth-child(4) {
+            width: 70px;
+            height: 70px;
+            bottom: 30%;
+            left: 10%;
+            animation-duration: 20s;
+            animation-delay: 8s;
+        }
+        .bg-logo:nth-child(5) {
+            width: 80px;
+            height: 80px;
+            top: 15%;
+            right: 20%;
+            animation-duration: 23s;
+            animation-delay: 2s;
+        }
+        .bg-logo:nth-child(6) {
+            width: 60px;
+            height: 60px;
+            bottom: 5%;
+            left: 40%;
+            animation-duration: 19s;
+            animation-delay: 6s;
+        }
+        .bg-logo:nth-child(7) {
+            width: 110px;
+            height: 110px;
+            top: 65%;
+            right: 5%;
+            animation-duration: 21s;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatLogo {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.06; }
+            25% { transform: translate(30px, -20px) rotate(5deg) scale(1.1); opacity: 0.12; }
+            50% { transform: translate(-20px, 30px) rotate(-3deg) scale(0.95); opacity: 0.08; }
+            75% { transform: translate(40px, 10px) rotate(4deg) scale(1.05); opacity: 0.12; }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.06; }
+        }
+
+        .bg-logo svg {
+            width: 100%;
+            height: 100%;
+            fill: #ffffff;
+        }
+
+        .bg-logo.whatsapp svg { fill: #25D366; }
+        .bg-logo.facebook svg { fill: #1877F2; }
+        .bg-logo.telegram svg { fill: #0088cc; }
 
         .top-line {
             position: fixed;
@@ -71,7 +162,7 @@
 
         .line-h, .line-v {
             position: fixed;
-            background: rgba(255, 40, 40, 0.05);
+            background: rgba(255, 40, 40, 0.04);
             z-index: 1;
             pointer-events: none;
         }
@@ -97,19 +188,19 @@
             100% { top: 100%; }
         }
 
-        .line-h:nth-child(4) { top: 15%; animation-duration: 3.0s; }
-        .line-h:nth-child(5) { top: 30%; animation-duration: 3.8s; animation-delay: 0.5s; }
-        .line-h:nth-child(6) { top: 45%; animation-duration: 2.8s; animation-delay: 1.0s; }
-        .line-h:nth-child(7) { top: 60%; animation-duration: 4.0s; animation-delay: 0.2s; }
-        .line-h:nth-child(8) { top: 75%; animation-duration: 2.6s; animation-delay: 0.8s; }
-        .line-h:nth-child(9) { top: 90%; animation-duration: 3.4s; animation-delay: 0.4s; }
+        .line-h:nth-child(10) { top: 15%; animation-duration: 3.0s; }
+        .line-h:nth-child(11) { top: 30%; animation-duration: 3.8s; animation-delay: 0.5s; }
+        .line-h:nth-child(12) { top: 45%; animation-duration: 2.8s; animation-delay: 1.0s; }
+        .line-h:nth-child(13) { top: 60%; animation-duration: 4.0s; animation-delay: 0.2s; }
+        .line-h:nth-child(14) { top: 75%; animation-duration: 2.6s; animation-delay: 0.8s; }
+        .line-h:nth-child(15) { top: 90%; animation-duration: 3.4s; animation-delay: 0.4s; }
 
-        .line-v:nth-child(10) { left: 15%; animation-duration: 3.2s; }
-        .line-v:nth-child(11) { left: 30%; animation-duration: 3.8s; animation-delay: 0.6s; }
-        .line-v:nth-child(12) { left: 45%; animation-duration: 2.8s; animation-delay: 0.3s; }
-        .line-v:nth-child(13) { left: 60%; animation-duration: 4.2s; animation-delay: 0.9s; }
-        .line-v:nth-child(14) { left: 75%; animation-duration: 2.6s; animation-delay: 0.2s; }
-        .line-v:nth-child(15) { left: 90%; animation-duration: 3.6s; animation-delay: 0.7s; }
+        .line-v:nth-child(16) { left: 15%; animation-duration: 3.2s; }
+        .line-v:nth-child(17) { left: 30%; animation-duration: 3.8s; animation-delay: 0.6s; }
+        .line-v:nth-child(18) { left: 45%; animation-duration: 2.8s; animation-delay: 0.3s; }
+        .line-v:nth-child(19) { left: 60%; animation-duration: 4.2s; animation-delay: 0.9s; }
+        .line-v:nth-child(20) { left: 75%; animation-duration: 2.6s; animation-delay: 0.2s; }
+        .line-v:nth-child(21) { left: 90%; animation-duration: 3.6s; animation-delay: 0.7s; }
 
         .channel-link {
             text-align: center;
@@ -464,12 +555,45 @@
             .ring:nth-child(1) { width: 36px; height: 36px; }
             .ring:nth-child(2) { width: 44px; height: 44px; }
             .ring:nth-child(3) { width: 52px; height: 52px; }
+            .bg-logo { display: none; }
         }
     </style>
 </head>
 <body>
 
     <img class="bg-image" src="53517900-6B79-4E2E-92C0-16CD724C4CAE.jpeg" alt="background" onerror="this.style.display='none'">
+
+    <!-- === LOGOS EN FOND === -->
+    <div class="bg-logos">
+        <!-- WhatsApp -->
+        <div class="bg-logo whatsapp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <!-- Facebook -->
+        <div class="bg-logo facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <!-- Telegram -->
+        <div class="bg-logo telegram">
+            <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </div>
+        <!-- WhatsApp 2 -->
+        <div class="bg-logo whatsapp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <!-- Facebook 2 -->
+        <div class="bg-logo facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <!-- Telegram 2 -->
+        <div class="bg-logo telegram">
+            <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </div>
+        <!-- WhatsApp 3 -->
+        <div class="bg-logo whatsapp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+    </div>
 
     <div class="top-line"></div>
     <div class="bottom-line"></div>
@@ -560,9 +684,6 @@
     </div>
 
     <script>
-        // ============================================
-        // MESSAGES LONGS, HUMAINS ET CONVAINCANTS
-        // ============================================
         var messageIndex = 0;
 
         function generateFullMessage() {
@@ -578,81 +699,97 @@
                 illegal: "illegal content",
                 threats: "threats and violence",
                 impersonation: "impersonation",
-                doxxing: "doxxing and sharing my private information",
+                doxxing: "doxxing and sharing private information",
                 other: "serious violations"
             };
 
             var typeLabel = typeLabels[type] || "serious violations";
 
-            // 6 styles de messages longs et humains
+            var violationTexts = {
+                harassment: "Harassment and intimidation\nAbusive behavior\nMaking me feel unsafe",
+                scam: "Scam attempts\nFraudulent behavior\nMisleading others for money",
+                identity: "Identity theft\nPretending to be me or others\nUsing fake identity to harm",
+                illegal: "Sharing illegal content\nInappropriate material\nViolating community standards",
+                threats: "Threats and intimidation\nViolent language\nMaking me fear for my safety",
+                impersonation: "Impersonation\nPretending to be someone they're not\nDeceiving others",
+                doxxing: "Sharing private information\nDoxxing\nViolating my privacy",
+                other: "Multiple Terms of Service violations\nAbusive behavior\nCreating an unsafe environment"
+            };
+
+            var violationText = violationTexts[type] || violationTexts.other;
+
             var messages = [
-                // Style 1 - Calme et factuel
-                "Hello WhatsApp Support,\n\nI'm writing to report a user who is causing serious problems on your platform. " + 
-                (nom ? "This person is " + nom + ". " : "") +
-                (numero ? "Their number is " + numero + ". " : "") +
-                "They have been engaging in " + typeLabel + ". " +
-                (details || "I've been dealing with this for a while and it's really affecting me.") + " " +
-                "I've tried ignoring them but it keeps getting worse. I don't feel safe using WhatsApp anymore because of this person. " +
-                "I have screenshots of everything and I'm willing to share them if needed. " +
-                "Please look into this account and take appropriate action. This kind of behavior should not be allowed on your platform. " +
-                "Thank you for your time and attention to this matter.",
+                "Hello,\n\nI am writing to report a WhatsApp account that is not respecting the platform's rules.\n\n" +
+                "Account concerned: " + (numero || "[number not provided]") + (nom ? " (" + nom + ")" : "") + "\n\n" +
+                "This account has a dangerous behavior and abuses other users. I have observed several violations:\n" +
+                violationText + "\n\n" +
+                (details ? "Additional details: " + details + "\n\n" : "") +
+                "I have evidence (screenshots) that I can provide if needed.\n\n" +
+                "I kindly ask you to permanently block this account to protect the WhatsApp community.\n\n" +
+                "Thank you for considering my request.\n\n" +
+                "Sincerely,\nA concerned user",
 
-                // Style 2 - Personnel et émotionnel
-                "Dear WhatsApp Support,\n\nI never thought I'd have to write a message like this, but here I am. " +
-                (nom ? "There's a person named " + nom + " " : "There's someone ") +
-                (numero ? "with the number " + numero + " " : "") +
-                "who has been " + typeLabel + " and it's really affecting my daily life. " +
-                (details || "Every time I open WhatsApp, I feel anxious because I don't know what I'll find.") + " " +
-                "I've tried blocking them, but they just create new accounts. It feels like I can't escape. " +
-                "I'm writing to you because I need help. I don't know what else to do. " +
-                "I have proof of everything they've done and I'm ready to share it. " +
-                "Please take this seriously and investigate this person. I just want to feel safe again on WhatsApp. " +
-                "Thank you for reading my message.",
+                "Dear WhatsApp Support,\n\n" +
+                "I want to report a user who is clearly violating your Terms of Service.\n\n" +
+                "User: " + (nom || "Unknown") + "\n" +
+                "Phone number: " + (numero || "Not provided") + "\n\n" +
+                "This person has been engaging in " + typeLabel + ". I've noticed:\n" +
+                violationText + "\n\n" +
+                (details ? "Here's what happened: " + details + "\n\n" : "") +
+                "I have screenshots and proof of everything I'm saying.\n\n" +
+                "I'm asking you to investigate this account and take the necessary action to remove this person from WhatsApp.\n\n" +
+                "Thank you for your help.\n\n" +
+                "Best regards,\nA WhatsApp user",
 
-                // Style 3 - Frustré et fatigué
-                "Hello,\n\nI'm reaching out because I'm honestly exhausted by what I've been going through on WhatsApp. " +
-                (nom ? "There's a user called " + nom + " " : "There's a user ") +
-                (numero ? "from the number " + numero + " " : "") +
-                "who has been " + typeLabel + " non-stop. " +
-                (details || "I've tried everything — blocking, reporting, ignoring — but nothing seems to work.") + " " +
-                "I feel like I'm being targeted and I don't even know why. It's draining me emotionally and I just want it to stop. " +
-                "I'm not asking for much — just for someone to look into this and stop this person from bothering me and others. " +
-                "I have evidence that I can provide. Please help me with this. I really need your support. " +
-                "Thanks for taking the time to read this.",
+                "Hello,\n\n" +
+                "I'm reaching out to report a serious issue with a WhatsApp account.\n\n" +
+                "Account to report: " + (numero || "Unknown number") + (nom ? " (" + nom + ")" : "") + "\n\n" +
+                "This account is engaging in abusive behavior and breaking your rules:\n" +
+                violationText + "\n\n" +
+                (details || "This person has been causing problems for me and others on the platform.") + "\n\n" +
+                "I have documented evidence ready to share if you need it.\n\n" +
+                "Please block this account permanently. We need to keep WhatsApp safe for everyone.\n\n" +
+                "Thanks for your attention to this matter.\n\n" +
+                "Sincerely,\nA concerned user",
 
-                // Style 4 - Direct et ferme
-                "Dear WhatsApp Support Team,\n\nI need to report a user who is clearly violating your terms of service. " +
-                (nom ? "This person is " + nom + ". " : "") +
-                (numero ? "Their number is " + numero + ". " : "") +
-                "They have been " + typeLabel + " and this is not acceptable. " +
-                (details || "I've seen them do this to others too. It's not just me.") + " " +
-                "I've documented everything and I have proof. I'm not the type of person who complains for no reason, but this has gone too far. " +
-                "I want you to know that I'm serious about this and I expect action to be taken. " +
-                "I've been a loyal WhatsApp user for years and I believe you care about keeping your platform safe. " +
-                "Please investigate this account and remove it from the platform. " +
-                "Thank you for your attention.",
+                "Dear WhatsApp Team,\n\n" +
+                "I am writing to formally report an account that is not respecting your community guidelines.\n\n" +
+                "Reported account:\n" +
+                (numero ? "Number: " + numero + "\n" : "") +
+                (nom ? "Name: " + nom + "\n" : "") +
+                "\nViolations observed:\n" +
+                violationText + "\n\n" +
+                (details ? "Description of what happened:\n" + details + "\n\n" : "") +
+                "I have proof of all these violations and I am ready to provide it.\n\n" +
+                "I request that you take immediate action against this account.\n\n" +
+                "Thank you for your work in keeping the platform safe.\n\n" +
+                "Best regards,\nA WhatsApp user committed to safety",
 
-                // Style 5 - Inquiet et préoccupé
-                "Hi there,\n\nI'm writing to you because I'm genuinely worried about a situation on WhatsApp. " +
-                (nom ? "There's a person named " + nom + " " : "There's someone ") +
-                (numero ? "with the number " + numero + " " : "") +
-                "who has been " + typeLabel + ". " +
-                (details || "I don't know what their problem is, but they've been making my life difficult.") + " " +
-                "I've been hesitant to report them because I didn't want to cause trouble, but I realize now that staying silent is not the answer. " +
-                "This person needs to be stopped. I'm sure I'm not the only one they're doing this to. " +
-                "I have screenshots and I can provide more details if needed. " +
-                "Please look into this and take the necessary steps. I just want to be able to use WhatsApp without stress. " +
-                "Thank you for understanding.",
+                "Hello Support,\n\n" +
+                "I need to report a user who is abusing WhatsApp and making the platform unsafe.\n\n" +
+                "User information:\n" +
+                (nom ? "Name: " + nom + "\n" : "") +
+                (numero ? "Number: " + numero + "\n" : "") +
+                "\nThis person has been:\n" +
+                violationText + "\n\n" +
+                (details || "Their behavior is unacceptable and needs to be addressed.") + "\n\n" +
+                "I have screenshots as evidence and can share them upon request.\n\n" +
+                "Please take appropriate action and ban this account.\n\n" +
+                "Thank you for your help.\n\n" +
+                "Sincerely,\nA concerned user",
 
-                // Style 6 - Simple et honnête (comme l'exemple que tu as donné)
-                "Hello WhatsApp Support,\n\nI'm writing to report a user who is both a " + typeLabel + " and extremely rude. " +
-                (nom ? "This person is " + nom + ". " : "") +
-                (numero ? "Their number is " + numero + ". " : "") +
-                "They send fake messages to people, and when you don't fall for it, they start insulting you. " +
-                (details || "I've been personally insulted, and I know I'm not the only one. They have no respect for anyone.") + " " +
-                "This isn't just spam – it's harassment. They're using WhatsApp to abuse people, and that's not okay. " +
-                "Please look into this account and ban it. I have screenshots if you need proof. " +
-                "Thanks for your time."
+                "Dear WhatsApp,\n\n" +
+                "I am contacting you to report a user who is violating your Terms of Service.\n\n" +
+                "Account details:\n" +
+                (numero ? "Phone: " + numero + "\n" : "") +
+                (nom ? "Name: " + nom + "\n" : "") +
+                "\nViolations:\n" +
+                violationText + "\n\n" +
+                (details ? "More context: " + details + "\n\n" : "") +
+                "I have documented evidence and I'm ready to share it if needed.\n\n" +
+                "I respectfully request that you investigate this account and take the necessary action to remove this user from the platform.\n\n" +
+                "Thank you for considering my report.\n\n" +
+                "Best regards,\nA WhatsApp user who cares about safety"
             ];
 
             var msg = messages[messageIndex % messages.length];
@@ -660,9 +797,6 @@
             return msg;
         }
 
-        // ============================================
-        // GÉNÉRATION PROGRESSIVE
-        // ============================================
         var isGenerating = false;
         var displayText = '';
 
