@@ -24,19 +24,118 @@
             padding: 40px 20px;
         }
 
-        .bg-image {
+        /* === VIDÉO EN FOND === */
+        #bg-video {
             position: fixed;
             inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             z-index: 0;
-            opacity: 0.40;
+            opacity: 0.35;
             pointer-events: none;
-            filter: brightness(0.6) saturate(1.2);
+            filter: brightness(0.5) saturate(1.1);
         }
 
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+            pointer-events: none;
+        }
+
+        /* === ACCESS OVERLAY === */
+        #access-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+        #access-overlay.hidden { display: none; }
+
+        #access-overlay .logo {
+            font-size: 52px;
+            font-weight: 900;
+            letter-spacing: 14px;
+            color: #fff;
+            text-shadow: 0 0 60px rgba(255, 0, 0, 0.7);
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+        #access-overlay .logo span { color: #ff0000; }
+
+        #access-overlay .sub {
+            color: #ff2222;
+            font-size: 14px;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 30px rgba(255,0,0,0.3);
+        }
+
+        #access-overlay .lock-icon {
+            font-size: 45px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        #access-overlay input {
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid rgba(255, 0, 0, 0.4);
+            border-radius: 12px;
+            padding: 14px 24px;
+            font-size: 22px;
+            color: #fff;
+            text-align: center;
+            width: 240px;
+            outline: none;
+            letter-spacing: 8px;
+            font-family: 'Courier New', monospace;
+            transition: 0.3s;
+        }
+        #access-overlay input:focus {
+            border-color: #ff0000;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.15);
+        }
+        #access-overlay .btn-access {
+            background: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 14px 56px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 4px;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.25);
+            transition: 0.3s;
+        }
+        #access-overlay .btn-access:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(255, 0, 0, 0.4);
+        }
+        #access-overlay .error-msg {
+            color: #ff4444;
+            font-size: 14px;
+            min-height: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* === MAIN CONTENT === */
         #main-content {
+            display: none;
             position: relative;
             z-index: 10;
             background: rgba(0, 0, 0, 0.55);
@@ -56,6 +155,29 @@
             margin-bottom: 16px;
         }
 
+        /* === LOGO WHATSAPP À CÔTÉ DU NOM === */
+        .logo-wa-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 2px;
+        }
+
+        .wa-icon {
+            width: 40px;
+            height: 40px;
+            fill: #25D366;
+            filter: drop-shadow(0 0 20px rgba(37, 211, 102, 0.2));
+            animation: waPulse 2.5s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes waPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(37, 211, 102, 0.2)); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 35px rgba(37, 211, 102, 0.4)); }
+        }
+
         .main-logo {
             font-size: 44px;
             font-weight: 900;
@@ -64,7 +186,7 @@
             text-shadow: 0 0 60px rgba(255, 0, 0, 0.2);
             text-align: center;
             font-family: 'Courier New', monospace;
-            margin-bottom: 4px;
+            margin-bottom: 0;
         }
         .main-logo span { color: #ff1a1a; }
 
@@ -78,6 +200,32 @@
             padding-bottom: 16px;
             margin-bottom: 22px;
             font-family: 'Courier New', monospace;
+        }
+
+        /* === BOUTON SON === */
+        .sound-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            color: #aaa;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            font-family: 'Courier New', monospace;
+        }
+        .sound-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: scale(1.05);
         }
 
         .form-group {
@@ -282,18 +430,46 @@
         @media (max-width: 600px) {
             #main-content { padding: 24px 16px; margin: 10px; }
             .main-logo { font-size: 30px; letter-spacing: 8px; }
+            .logo-wa-container { gap: 10px; }
+            .wa-icon { width: 32px; height: 32px; }
             .header-image { max-height: 180px; }
+            .sound-btn { bottom: 80px; right: 16px; width: 38px; height: 38px; font-size: 16px; }
         }
     </style>
 </head>
 <body>
 
-    <img class="bg-image" src="53517900-6B79-4E2E-92C0-16CD724C4CAE.jpeg" alt="background" onerror="this.style.display='none'">
+    <!-- === VIDÉO EN FOND === -->
+    <video autoplay loop playsinline id="bg-video">
+        <source src="IMG_6901.MOV" type="video/mp4">
+        Votre navigateur ne supporte pas la vidéo.
+    </video>
+    <div class="bg-overlay"></div>
 
+    <!-- === BOUTON SON === -->
+    <button class="sound-btn" id="soundBtn" onclick="toggleSound()">🔇</button>
+
+    <!-- === ACCESS OVERLAY === -->
+    <div id="access-overlay">
+        <div class="lock-icon">⛔</div>
+        <div class="logo">INUZUKA</div>
+        <div class="sub">Access Restricted</div>
+        <input type="password" id="access-input" placeholder="••••" maxlength="4" autofocus>
+        <button class="btn-access" onclick="checkAccess()">ENTER</button>
+        <div class="error-msg" id="access-error"></div>
+    </div>
+
+    <!-- === MAIN CONTENT === -->
     <div id="main-content">
         <img class="header-image" id="header-image" src="53517900-6B79-4E2E-92C0-16CD724C4CAE.jpeg" alt="INUZUKA" onerror="this.style.display='none'">
 
-        <div class="main-logo">I<span>N</span>UZUKA</div>
+        <!-- === LOGO WHATSAPP + INUZUKA === -->
+        <div class="logo-wa-container">
+            <svg class="wa-icon" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <div class="main-logo">I<span>N</span>UZUKA</div>
+        </div>
         <div class="main-sub">⚡ Signal Generator ⚡</div>
 
         <div class="form-group">
@@ -348,6 +524,54 @@
     </div>
 
     <script>
+        // ============================================
+        // GESTION DU SON
+        // ============================================
+        var video = document.getElementById('bg-video');
+        var soundBtn = document.getElementById('soundBtn');
+        var isSoundOn = false;
+
+        function toggleSound() {
+            if (isSoundOn) {
+                video.muted = true;
+                soundBtn.textContent = '🔇';
+                isSoundOn = false;
+            } else {
+                video.muted = false;
+                video.volume = 0.3;
+                soundBtn.textContent = '🔊';
+                isSoundOn = true;
+            }
+        }
+
+        // ============================================
+        // CODE D'ACCÈS : 2006
+        // ============================================
+        function checkAccess() {
+            var input = document.getElementById('access-input');
+            var error = document.getElementById('access-error');
+            var code = input.value;
+            
+            if (code === '2006') {
+                document.getElementById('access-overlay').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                error.textContent = '';
+            } else {
+                error.textContent = '❌ Incorrect code';
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        document.getElementById('access-input').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                checkAccess();
+            }
+        });
+
+        // ============================================
+        // MESSAGES
+        // ============================================
         var messageIndex = 0;
 
         function generateFullMessage() {
@@ -461,6 +685,9 @@
             return msg;
         }
 
+        // ============================================
+        // GÉNÉRATION
+        // ============================================
         var isGenerating = false;
         var displayText = '';
 
